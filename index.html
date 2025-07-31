@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Sthefane - 4 Meses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFB300;
+            --primary-light: #FFD54F;
+            --primary-dark: #FF8F00;
+            --secondary: #5D4037;
+            --secondary-light: #8D6E63;
+            --background: #FFF8F0;
+            --text: #3E2723;
+            --accent: #FF5252;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--text);
+            text-align: center;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+            padding: 40px 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            margin: 0;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            color: var(--white);
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        .sunflower {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: spin 8s linear infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .memory {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            text-align: left;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .memory:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+        
+        .memory h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px dashed var(--primary-light);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            border: 12px solid var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .photo-frame::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-frame:hover::before {
+            opacity: 1;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-frame:hover img {
+            transform: scale(1.1);
+        }
+        
+        .countdown {
+            font-size: 1.8em;
+            margin: 40px 0;
+            color: var(--primary-dark);
+            background: rgba(255, 214, 79, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            font-weight: 600;
+            border: 2px dashed var(--primary);
+        }
+        
+        .message-box {
+            background: linear-gradient(135deg, rgba(255, 243, 224, 0.8), rgba(255, 248, 225, 0.9));
+            border-left: 5px solid var(--primary);
+            padding: 25px;
+            margin: 40px 0;
+            text-align: left;
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="20" font-family="Arial" font-size="10" fill="rgba(255, 179, 0, 0.1)">❤️</text></svg>');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .message-box h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: var(--primary-dark);
+            margin-top: 0;
+            position: relative;
+        }
+        
+        .message-box p {
+            position: relative;
+            font-size: 1.1em;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            padding: 30px 0;
+            margin-top: 60px;
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .footer p {
+            margin: 0;
+            padding-top: 20px;
+        }
+        
+        .heart {
+            color: var(--accent);
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: var(--white);
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 15px rgba(255, 179, 0, 0.3);
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(255, 179, 0, 0.4);
+        }
+        
+        button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .hidden-message {
+            display: none;
+            margin: 30px auto;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 236, 179, 0.9), rgba(255, 241, 194, 0.9));
+            border-radius: 15px;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hidden-message::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart-shape {
+            position: absolute;
+            opacity: 0;
+            font-size: 20px;
+            animation: float 10s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: var(--primary-dark);
+            margin: 40px 0;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 20px;
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .polaroid img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+        
+        .polaroid p {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: var(--secondary);
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <div class="header">
+        <div class="sunflower">🌻</div>
+        <h1>Sthefane, 4 Meses Desde Aquela Mensagem</h1>
+        <p>Lembra quando você me mandou mensagem sobre a prova de química?</p>
+    </div>
+    
+    <div class="container">
+        <div class="countdown">
+            <p>Nossos 4 meses de conhecimento ❤️</p>
+        </div>
+        
+        <div class="message-box">
+            <h2>Meu Amor...</h2>
+            <p>Quatro meses atrás, no dia 31 de março, minha vida mudou quando recebi aquela mensagem sua sobre a prova de química. Quem diria que uma simples dúvida escolar se transformaria nessa conexão tão especial?</p>
+            <p>Como um girassol que segue a luz do sol, eu me encontro seguindo a luz que você traz para minha vida. Aos 16 e 15 anos, estamos descobrindo juntos o que significa realmente gostar de alguém.</p>
+            <p>Este site é uma pequena lembrança do nosso começo, da nossa história que está apenas começando a ser escrita.</p>
+        </div>
+        
+        <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5em; color: var(--primary-dark);">Nosso Começo</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>31 de Março - O Primeiro Contato</h3>
+                    <p>Uma simples mensagem mudou tudo. Naquele momento eu não sabia, mas estava começando algo especial.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Nossa Primeira Saída</h3>
+                    <p>O dia em que finalmente nos vimos pessoalmente e confirmamos que essa conexão era real.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="memory">
+            <h3>Minha Declaração</h3>
+            <p>E aliás, você virou uma pessoa MUITO importante pra mim, então já quero registrar aqui que eu TE AMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!</p>
+            <p>Desculpa se sou chato, grudento, insuportável e tudo mais, porém sou o único que vou fazer de tudo pra te fazer feliz, espero que eu esteja conseguindo... eu te amo MUITOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</p>
+        </div>
+        
+        <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5em; color: var(--primary-dark); margin-top: 50px;">Nossos Momentos</h2>
+        
+        <div class="photo-container">
+            <div class="polaroid">
+                <img src="foto1.jpeg" alt="Nossa foto 1">
+                <p>Nosso primeiro encontro</p>
+            </div>
+            <div class="polaroid">
+                <img src="foto2.jpeg" alt="Nossa foto 2">
+                <p>Um dia especial</p>
+            </div>
+        </div>
+        
+        <button onclick="showMessage()">Eu te amo com minha vida!</button>
+        <div id="hiddenMessage" class="hidden-message">
+            <p style="font-size: 1.2em;">Sthefane, eu realmente gosto de você. Cada dia desde aquela mensagem tem sido mais especial porque você está nele. Obrigado por esses 4 meses incríveis. Mal posso esperar para ver o que o futuro nos reserva! ❤️</p>
+        </div>
+        
+        <div style="margin: 60px 0;">
+            <p>Com todo meu carinho,</p>
+            <div class="signature">Jeff <span class="heart">❤️</span></div>
+            <p style="font-style: italic; color: var(--secondary-light);">(seu bebê)</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Feito com amor por Jeff para Sthefane - 4 meses desde 31/03</p>
+    </div>
+    
+    <script>
+        function showMessage() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block';
+            
+            // Adiciona corações flutuantes
+            for (let i = 0; i < 20; i++) {
+                createHeart();
+            }
+        }
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-shape');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        // Atualiza o contador de tempo juntos
+        function updateTimeTogether() {
+            const startDate = new Date('2024-03-31'); // Data do primeiro contato
+            const now = new Date();
+            const diff = now - startDate;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60);
+            
+            document.querySelector('.countdown p').innerHTML = 
+                `${days} dias, ${hours} horas e ${minutes} minutos<br>desde que nos conhecemos! <span class="heart">❤️</span>`;
+        }
+        
+        // Cria alguns corações flutuantes iniciais
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                createHeart();
+            }, i * 1000);
+        }
+        
+        updateTimeTogether();
+        setInterval(updateTimeTogether, 60000); // Atualiza a cada minuto
+    </script>
+</body>
+</html>
